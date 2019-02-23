@@ -64,8 +64,8 @@ usersController.userList = (req, res) => {
 		} else {
 			return res.status(200).json({
 				status:true,
-				message'Existoso se encontraron los datos',
-				usersList
+				message:'Existoso se encontraron los datos',
+                usersList
 			})
 		}
 	})
