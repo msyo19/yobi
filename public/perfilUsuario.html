@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+        <div class="navbar bg-info">
+            <a href="#" class="navbar-brand text-light"><h1>Yobi</h1></a>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{name}} <i class="fas fa-user fa-2x"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Editar</a>
+                    <a class="dropdown-item" href="#">Ofrece un servicio</a>
+                    <a class="dropdown-item" href="#">Log out</a>
+                </div>
+            </div>           
+        </div>
+        <style>
+            #perfil{
+                box-shadow: 1px 2px 10px;
+                border-radius: 25px;
+            }
+            #editC{
+                border-radius: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                font-size: 20px;
+                background-color: #0071BC;
+                color: white;
+            }
+            #editP{
+                border-radius: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 40%;
+                font-size: 20px;
+                background-color: #0071BC;
+                color: white;
+            }
+
+            #cfooter{
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+                background-color: #E6E6E6;
+            }
+            
+            input[type=text], input[type=password], input[type=email] {
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            }
+            #user{
+                width: 60%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <br>
+        <!--Informacion usaurio-->
+        <section class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="card"  id="perfil">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <br>
+                                    <img src="images/avatar.png" alt="user" id="user">
+                                </div>
+                                <div class="col-6">
+                                    <div action="">
+                                        <i class="fas fa-user"><span></span> </i><label for="name">Nombre</label> 
+                                        <input class="form-control" readonly type="text" name="name" id="name">
+                                        <i class="fas fa-envelope"></i><span></span> <label for="email">E-mail</label><span></span>
+                                        <input class="form-control" readonly type="email" name="email" id="email">
+                                        <i class="fas fa-key"></i><span></span> <label for="pass">Contraseña</label><span></span> 
+                                        <input class="form-control" readonly type="password" name="pass" id="pass">
+                                        <i class="fas fa-map-marker-alt"></i><span></span> <label for="address">Direccion</label><span></span> 
+                                        <input class="form-control" readonly type="text" name="address" id="address">
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" id="cfooter">
+                                <button class="btn" id="editC">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br><br>
+        <!-- Informacion empresa -->
+        <section class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="card" id="perfil">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <i class="fas fa-concierge-bell"></i><span></span> <label for="service">Servicio</label>
+                                    <input class="form-control" readonly type="text" name="service" id="service">
+                                </div>
+                                <div class="col-4">
+                                    <i class="fas fa-paragraph"></i><span></span> <label for="area">Area</label>
+                                    <input class="form-control" readonly type="text" name="area" id="area">
+                                </div>
+                                <div class="col-4">
+                                    <i class="fas fa-phone"></i><span></span> <label for="tel">Teléfono</label>
+                                    <input class="form-control" readonly type="text" name="tel" id="tel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" id="cfooter">
+                            <button class="btn" id="editP">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br><br>
+        
+</body>
+</html>
