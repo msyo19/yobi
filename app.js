@@ -26,5 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // rutas controladores
+
 app.use('/yobi/api/users',userRouter);
 module.exports = app;
