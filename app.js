@@ -35,4 +35,13 @@ app.use('/users', usersRouter);
 // rutas controladores
 
 app.use('/yobi/api/users',userRouter);
+
+app.post('/session', (req, res) => {
+	userModel.findOne({
+		email: req.body.email,
+		password: req.body.pass
+	}, (err, Usuario) => {
+		req.session._id = id
+	});
+});
 module.exports = app;
