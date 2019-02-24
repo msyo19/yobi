@@ -17,7 +17,7 @@ var userSchema = new mongoose.Schema(
         phone: {
             type: Number
         }, 
-        area : {
+        area: {
             type: String
         }, 
         status: {
