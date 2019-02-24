@@ -118,5 +118,22 @@ usersController.filterPhone = (req, res) => {
 	});
 }
 
+usersController.deleteSession = (req, res) => {
+	var id = req.params._id;
+	usersModel.remove({_id: id}, (err) => {
+		if (err) {
+			res.status(400).json({
+				status: false, 
+				message: "Error"
+			});
+		} else {
+			res.status(200).json({
+				status: true, 
+				message: "Exito"
+			});
+		}
+	});
+}
 module.exports = usersController;
 
+ 
