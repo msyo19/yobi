@@ -86,6 +86,21 @@
             margin-left: 10%;
             margin-right: 10%;
         }
+        #user{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #enCom{
+            border-radius: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            font-size: 20px;
+            background-color: #0071BC;
+            color: white;
+        }
     </style>
     <body>
         <div class="navbar bg-info">
@@ -138,7 +153,7 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-xl-1">
-                                            <img src="images/avatar.png" style="width:100%" alt="photoUser">
+                                            <img id="photoU" src="images/avatar.png" style="width:50px" alt="photoUser">
                                         </div>
                                         <div class="col-xl-11" style="text-align: left;">
                                             <p id="comment">El servicio me parecio maravilloso</p>
@@ -147,7 +162,7 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-xl-1">
-                                            <img src="images/avatar.png" style="width:100%" alt="photoUser">
+                                            <img id="photoU" src="images/avatar.png" style="width:50px" alt="photoUser">
                                         </div>
                                         <div class="col-xl-11" style="text-align: left;">
                                             <p id="comment">El servicio me parecio maravilloso maravilloso</p>
@@ -156,7 +171,7 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-xl-1">
-                                            <img src="images/avatar.png" style="width:100%" alt="photoUser">
+                                            <img id="photoU" src="images/avatar.png" style="width:50px" alt="photoUser">
                                         </div>
                                         <div class="col-xl-11" style="text-align: left;">
                                             <p id="comment">El servicio me parecio maravilloso</p>
@@ -174,7 +189,9 @@
                                 <i class="fas fa-comment"></i><span> </span> <label for="comments">Comentario</label>
                                 <textarea class="form-control-plaintext" name="comments" id="comments"></textarea>
                             </div>
-                            <br><br>
+                            <br>
+                            <button id="enCom">Enviar Comentario</button>
+                            <br>
                         </div>
                     </div>
                 </div>
