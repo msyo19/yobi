@@ -109,7 +109,8 @@ app.get('/session2', (req, res) => {
 	});
 });
 
-app.delete('destroyUser', (req, res) => {
-	userModel.destroy(req.params.id).exect
+app.get('/destroyUser', (req, res) => {
+	req.session.destroy();
+	res.sendFile(path.resolve('public', 'index.html'));
 })
 module.exports = app;
