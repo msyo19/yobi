@@ -8,7 +8,13 @@ usersController.nuevoUsuario = (req,res) => {
 		name: req.body.name,
 		address: req.body.address,
 		email: req.body.email,
-		password: req.body.password	
+		password: req.body.password,
+		phone: req.body.phone,
+		area: req.body.area,
+		status: req.body.status,
+		comments: req.body.comments,
+		rate: req.body.rate,
+		services: req.body.services
 	}); 
 	nuevoUsuario.save((err,usuario) =>{
 		if(err){
@@ -24,33 +30,34 @@ usersController.nuevoUsuario = (req,res) => {
 	})
 }
 // Almacenar los datos nuevos del usuario  del usuario que a hora sera trabajador
-usersController.nuevoTrabajador = (req,res) => {
-	var nuevoTrabajador = new usuario({
-		name: req.body.name,
+/** @Update project by ID --> UPDATE */
+usersController.nuevoTrabajador = (req, res) => {
+  const datosTrabajador = {
+  		name: req.body.name,
 		address: req.body.address,
 		email: req.body.email,
-		password: req.body.password	,
+		password: req.body.password,
 		phone: req.body.phone,
 		area: req.body.area,
 		status: req.body.status,
 		comments: req.body.comments,
 		rate: req.body.rate,
 		services: req.body.services
-	}); 
-	nuevoUsuario.save((err,usuario) =>{
-		if(err){
-			return res.status(400).json({
-				status:false,
-				message: 'Error al guardar en la base de datos'
-			});
-		} else {
-			return res.status(200).json({
-				status:true,
-				message: 'Guardado'
-			})
-		}
-	})
-}
+  };
+  usersModel.updateOne({ _id: req.body._id }, datosTrabajador, (err) => {
+    if (err) {
+      return res.status(400).json({
+        success: false,
+        message: 'Couldn´t update this project'
+      });
+    }
+    return res.status(200).json({
+      status: true,
+      message: 'Successfully update this project'
+    });
+  });
+};
+
 // ESTA FUNCION ES PARA TRAER LOS DATOS
 
 usersController.userList = (req, res) => {
@@ -89,3 +96,4 @@ usersController.search = (req, res) => {
 }
 
 module.exports = usersController;
+
