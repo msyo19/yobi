@@ -10,6 +10,49 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body{
+            background: linear-gradient(to right, #00b8bc,#0071bc)
+        }
+        #registrar{
+                box-shadow: 1px 5px 10px;
+                border-radius: 25px;
+                background-color: #E6E6E6;
+        }
+        input[type=text], input[type=password], input[type=email] {
+            box-shadow: 0 0 1px;
+            border-radius: 50px;
+        }
+        input[type=submit]{
+            border-radius: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            font-size: 20px;
+            background-color: #0071BC;
+            color: white;
+        }
+
+        #category{
+            width: 80%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        #button{
+                border-radius: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                font-size: 20px;
+                background-color: #0071BC;
+                color: white;
+            }
+</style>
 </head>
 <body>
         <!-- Logo -->
@@ -37,7 +80,7 @@
                                         <input class="form-control" type="email" name="email" id="email"><br>
                                         <label for="pass">Contraseña</label>
                                         <input class="form-control" type="password" name="pass" id="pass"><br>
-                                        <button class="btn" onclick="RegistrarUsuario()">Registrar</button>
+                                        <button class="btn" id="button" onclick="RegistrarUsuario()">Registrar</button>
                                         
                                 </div>
                                 </div>
@@ -48,37 +91,6 @@
                         </div>
                 </div>
     </section>
-    <style>
-            body{
-                background: linear-gradient(to right, #00b8bc,#0071bc)
-            }
-            #registrar{
-                    box-shadow: 1px 5px 10px;
-                    border-radius: 25px;
-                    background-color: #E6E6E6;
-            }
-            input[type=text], input[type=password], input[type=email] {
-                box-shadow: 0 0 1px;
-                border-radius: 50px;
-            }
-            input[type=submit]{
-                border-radius: 50px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 80%;
-                font-size: 20px;
-                background-color: #0071BC;
-                color: white;
-            }
-
-            #category{
-                width: 80%;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-    </style>
     <script>   
         
         
@@ -87,10 +99,15 @@
             var name = document.getElementById("name").value;
             var address = document.getElementById("address").value;
             var email = document.getElementById("email").value;
-            var pass = document.getElementById("pass").value;
-            console.log({'name':name,'address':address,'email':email,'password':pass});
-           mandarDatos("../yobi/api/users/nuevoUsuario",{'name':name,'address':address,'email':email,'password':pass});
-        }
+            var pass = (document.getElementById("pass").value).toString();
+            if(name=="" || address=="" || email=="" || pass==""){
+                alert("Complete todos los campos")
+            }else{
+                alert("Usuario Registrado");
+                mandarDatos("http://localhost:3000/yobi/api/users/nuevoUsuario",{'name':name,'address':address,'email':email,'pass':pass});
+                location.reload();
+            }
+}
 
         function inicio() {
             var usuarioL = document.getElementById("usuarioL").value;
