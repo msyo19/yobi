@@ -12,25 +12,30 @@
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
+    #card-servicio{
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        border-radius:20px; 
+
+    }
     </style>
 </head>
 <body>
-        <div class="navbar bg-info">
-                <a href="#" class="navbar-brand text-light"><h2>Yobi</h2></a>
-                   
-                  
-
-                <div class="dropdown">
-                        <button class="btn dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {{name}} <i class="fas fa-user fa-2x"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Editar</a>
-                          <a class="dropdown-item" href="#">Ofrece un servicio</a>
-                          <a class="dropdown-item" href="#">Log out</a>
-                        </div>
-                      </div>           
+    <div id="hola">
+       <div class="navbar bg-info">
+            <a href="#" class="navbar-brand text-light"><h1>Yobi</h1></a>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{name}} <i class="fas fa-user fa-2x"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Editar</a>
+                    <a class="dropdown-item" href="#">Ofrece un servicio</a>
+                    <a class="dropdown-item" href="#">Log out</a>
+                </div>
+            </div>           
         </div>
+       
         <br>
         <div class="form-group">
             <div class="row justify-content-center">
@@ -46,17 +51,35 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card" id="card-servicio">
                     <div class="card-body">
-                         <div class="row">
-                             <div class="card-title col-sm-4"> <img src="../public/images/user.png" alt="user" width="60px"></div>
-                             <div class="card-text col-sm-8" ><h4>{{name}} , {{servicess2}} , {{address}}</h4></div>
+                         <div class="row ">
+                             <div class="card-title col-sm-4"> <img src="../public/images/user.png" alt="user" width="70px"> <a href="/perfilProveedor"><i class="fas fa-info-circle fa-2x"></i></a></div>
+                             <div class="card-text col-sm-8" ><h5 style="color:#00759d;">{{name}}</h5><p>{{services}}</p>
+                            <label for="address">Dirección</label>
+                            <input type="text" :placeholder="address" class="form-control" readonly>
+                            </div>
                          </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+    var app = new Vue({
+
+        el:'#hola',
+        data:{
+            name: 'Jorge Alberto Carranza',
+            services:'Electricista, Mecanico',
+            address: 'San Marcos, 1744, Col. San Jorge'
+
+        }
+    })
+
+    </script>
     
 
 
