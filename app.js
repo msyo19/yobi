@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var cors = require('cors');
 //rutas controladores
 var userRouter = require('./src/routes/userRoutes');
+var categoriaRouter = require('./src/routes/categoriaRoutes');
 
 
 var app = express();
@@ -28,4 +29,5 @@ app.use('/users', usersRouter);
 // rutas controladores
 
 app.use('/yobi/api/users',userRouter);
+app.use('/yobi/api/categoria', categoriaRouter);
 module.exports = app;
