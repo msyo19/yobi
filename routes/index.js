@@ -35,6 +35,8 @@ router.get('/perfilProveedor', function (req, res, next) {
   res.sendFile(path.resolve('public', 'perfilProveedor.html'));
 });
 
+
+
 router.get('/perfilUsuario', function (req, res, next) {
   res.sendFile(path.resolve('public', 'perfilUsuario.html'));
 });
