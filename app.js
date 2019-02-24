@@ -108,4 +108,8 @@ app.get('/session2', (req, res) => {
 	}
 	});
 });
+
+app.delete('destroyUser', (req, res) => {
+	userModel.destroy(req.params.id).exect
+})
 module.exports = app;
