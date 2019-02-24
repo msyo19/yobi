@@ -15,6 +15,14 @@ router.get('/inicio', function (req, res, next) {
   res.sendFile(path.resolve('public', 'inicio.html'));
 });
 
+router.get('/perfilProveedor', function (req, res, next) {
+  res.sendFile(path.resolve('public', 'perfilProveedor.html'));
+});
+
+router.get('/perfilUsuario', function (req, res, next) {
+  res.sendFile(path.resolve('public', 'perfilUsuario.html'));
+});
+
 router.get('/registerTrabajo', function (req, res, next) {
   res.sendFile(path.resolve('public', 'registerTrabajo.html'));
 });
