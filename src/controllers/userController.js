@@ -4,9 +4,9 @@ var usersController = {};
 //variable create
 //Esta funcion es para almacenar los datos de un usuario
 usersController.nuevoUsuario = (req,res) => {
-	var nuevoUsuario = new usuario({
+	var nuevoUsuario = new usersModel({
 		name: req.body.name,
-		addres: req.body.addres,
+		address: req.body.address,
 		email: req.body.email,
 		password: req.body.password	
 	}); 
@@ -16,19 +16,18 @@ usersController.nuevoUsuario = (req,res) => {
 				status:false,
 				message: 'Error al guardar en la base de datos'
 			});
-		} else {
-			return res.status(200).json({
+		} 
+		return res.status(200).json({
 				status:true,
 				message: 'Guardado'
 			})
-		}
 	})
 }
 // Almacenar los datos nuevos del usuario  del usuario que a hora sera trabajador
 usersController.nuevoTrabajador = (req,res) => {
 	var nuevoTrabajador = new usuario({
 		name: req.body.name,
-		addres: req.body.addres,
+		address: req.body.address,
 		email: req.body.email,
 		password: req.body.password	,
 		phone: req.body.phone,
@@ -64,10 +63,10 @@ usersController.userList = (req, res) => {
 		} else {
 			return res.status(200).json({
 				status:true,
-				message'Existoso se encontraron los datos',
+				message:'Existoso se encontraron los datos',
 				usersList
 			})
 		}
 	})
 }
-module.export = usersController;
+module.exports = usersController;

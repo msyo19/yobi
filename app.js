@@ -6,6 +6,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//rutas controladores
+var userRouter = require('./src/routes/userRoutes');
+
+
 var app = express();
 
 app.use(logger('dev'));
@@ -16,5 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+// rutas controladores
+app.use('/yobi/api/users',userRouter);
 module.exports = app;
