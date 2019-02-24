@@ -4,9 +4,9 @@ var usersController = {};
 //variable create
 //Esta funcion es para almacenar los datos de un usuario
 usersController.nuevoUsuario = (req,res) => {
-	var nuevoUsuario = new usuario({
+	var nuevoUsuario = new usersModel({
 		name: req.body.name,
-		addres: req.body.addres,
+		address: req.body.address,
 		email: req.body.email,
 		password: req.body.password	
 	}); 
@@ -16,19 +16,18 @@ usersController.nuevoUsuario = (req,res) => {
 				status:false,
 				message: 'Error al guardar en la base de datos'
 			});
-		} else {
-			return res.status(200).json({
+		} 
+		return res.status(200).json({
 				status:true,
 				message: 'Guardado'
 			})
-		}
 	})
 }
 // Almacenar los datos nuevos del usuario  del usuario que a hora sera trabajador
 usersController.nuevoTrabajador = (req,res) => {
 	var nuevoTrabajador = new usuario({
 		name: req.body.name,
-		addres: req.body.addres,
+		address: req.body.address,
 		email: req.body.email,
 		password: req.body.password	,
 		phone: req.body.phone,
@@ -65,9 +64,28 @@ usersController.userList = (req, res) => {
 			return res.status(200).json({
 				status:true,
 				message:'Existoso se encontraron los datos',
-                usersList
+				usersList
 			})
 		}
 	})
 }
-module.export = usersController;
+
+usersController.search = (req, res) => {
+	usersModel.findOne({name: 'name'}, (err, searchUser) => {
+		if (err) {
+			return res.status(400).json({
+				status:false,
+				message:'No encontrado'
+			}) 
+		}
+		else {
+				return res.status(200).json({
+					status:true,
+					message:'Busqueda existosa',
+					searchUser
+				})
+			}
+	});
+}
+
+module.exports = usersController;
