@@ -30,4 +30,12 @@ router.get('/registerTrabajo', function (req, res, next) {
 router.get('/servicios', function (req, res, next) {
   res.sendFile(path.resolve('public', 'servicios.html'));
 });
+
+router.get('/perfilProveedor', function (req, res, next) {
+  res.sendFile(path.resolve('public', 'perfilProveedor.html'));
+});
+
+router.get('/perfilUsuario', function (req, res, next) {
+  res.sendFile(path.resolve('public', 'perfilUsuario.html'));
+});
 module.exports = router;

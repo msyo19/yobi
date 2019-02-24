@@ -10,7 +10,7 @@ var cors = require('cors');
 var session = require('express-session');
 //rutas controladores
 var userRouter = require('./src/routes/userRoutes');
-var userModel = require('./src/models/users')
+var categoriaRouter = require('./src/routes/categoriaRoutes');
 
 
 var app = express();
@@ -35,18 +35,4 @@ app.use('/users', usersRouter);
 // rutas controladores
 
 app.use('/yobi/api/users',userRouter);
-
-
-
-
-
-app.post('/session', (req, res) => {
-	userModel.findOne({
-		email: req.body.email,
-		password: req.body.pass
-	}, (err, Usuario) => {
-		req.session._id = id
-	});
-});
-
 module.exports = app;
