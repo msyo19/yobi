@@ -8,14 +8,16 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../javascripts/test.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
         <!-- Logo -->
         <nav class="navbar navbar-light text-light">
                         <a class="navbar-brand"><h1>Yobi</h1></a>
                         <form class="form-inline">
-                          <input class="form-control mr-sm-2" type="email" placeholder="Correo Electronico" aria-label="Search"> <br><br>
-                          <input class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Search">
+                          <input id="usuarioL" class="form-control mr-sm-2" type="email" placeholder="Correo Electronico" aria-label="Search"> <br><br>
+                          <input id="passL" class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Search">
                           <button class="btn btn-dark my-2 my-sm-0" type="submit">Entrar</button>
                         </form>
         </nav>
@@ -26,7 +28,7 @@
                                 <div class="card-body" id="registrar">
                                         <h2 id="box-title" style="text-align:center;">Registrate</h2>
                                         <br>
-                                <form action="">
+                                <div id="RegistroDeUsuario">
                                         <label for="name">Nombre</label>
                                         <input class="form-control" type="text" name="name" id="name"><br>
                                         <label for="address">Direccion</label>
@@ -35,8 +37,9 @@
                                         <input class="form-control" type="email" name="email" id="email"><br>
                                         <label for="pass">Contraseña</label>
                                         <input class="form-control" type="password" name="pass" id="pass"><br>
-                                        <input class="btn" type="submit" value="Registrar">
-                                </form>
+                                        <button class="btn" onclick="RegistrarUsuario()">Registrar</button>
+                                        
+                                </div>
                                 </div>
                         </div>
                         <div class="col-sm-6">
@@ -76,5 +79,18 @@
                 margin-right: auto;
             }
     </style>
+    <script>   
+        var usuarioL = document.getElementById("usuarioL");
+        var passL = document.getElementById("passL");
+        
+        function RegistrarUsuario() {
+
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var email = document.getElementById("email").value;
+            var pass = (document.getElementById("pass").value).toString();
+           mandarDatos("http://localhost:3000/yobi/api/users/nuevoUsuario",{'name':name,'address':address,'email':email,'pass':pass});
+        }
+    </script>
 </body>
 </html>
