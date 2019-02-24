@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -57,7 +57,7 @@
             <a href="#" class="navbar-brand text-light"><h1>Yobi</h1></a>
             <div class="dropdown">
                 <button class="btn dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{name}} <i class="fas fa-user fa-2x"></i>
+                    {{datos['name']}} <i class="fas fa-user fa-2x"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Editar</a>
@@ -82,13 +82,13 @@
                                 <div class="col-xl-6">
                                     <div action="">
                                         <i class="fas fa-user"><span></span> </i><label for="name">Nombre</label> 
-                                        <input class="form-control-plaintext" readonly type="text" name="name" id="name" :placeholder="name">
+                                        <input class="form-control-plaintext" readonly type="text" name="name" id="name" :placeholder="datos.name">
                                         <i class="fas fa-envelope"></i><span></span> <label for="email">E-mail</label><span></span>
-                                        <input class="form-control-plaintext" readonly type="email" name="email" id="email" :placeholder="email">
+                                        <input class="form-control-plaintext" readonly type="email" name="email" id="email" :placeholder="datos.email">
                                         <i class="fas fa-key"></i><span></span> <label for="pass">Contraseña</label><span></span> 
-                                        <input class="form-control-plaintext" readonly type="password" name="pass" id="pass" :placeholder="pass">
+                                        <input class="form-control-plaintext" readonly type="password" name="pass" id="pass" :placeholder="datos.password">
                                         <i class="fas fa-map-marker-alt"></i><span></span> <label for="address">Direccion</label><span></span> 
-                                        <input class="form-control-plaintext" readonly type="text" name="address" id="address" :placeholder="address">
+                                        <input class="form-control-plaintext" readonly type="text" name="address" id="address" :placeholder="datos.address">
                                         <br>
                                     </div>
                                 </div>
@@ -111,15 +111,15 @@
                             <div class="row">
                                 <div class="col-xl-4">
                                     <i class="fas fa-concierge-bell"></i><span></span> <label for="service">Servicio</label>
-                                    <input class="form-control-plaintext" readonly type="text" name="services" id="services" :placeholder="service">
+                                    <input class="form-control-plaintext" readonly type="text" name="services" id="services" :placeholder="datos.services">
                                 </div>
                                 <div class="col-xl-4">
                                     <i class="fas fa-paragraph"></i><span></span> <label for="area">Area</label>
-                                    <input class="form-control-plaintext" readonly type="text" name="area" id="area" :placeholder="area">
+                                    <input class="form-control-plaintext" readonly type="text" name="area" id="area" :placeholder="datos.area">
                                 </div>
                                 <div class="col-xl-4">
                                     <i class="fas fa-phone"></i><span></span> <label for="phone">Teléfono</label>
-                                    <input class="form-control-plaintext"  id="disabledTextInput" readonly type="text" name="phone" id="phone" v-bind:placeholder="phone">
+                                    <input class="form-control-plaintext"  id="disabledTextInput" readonly type="text" name="phone" id="phone" :placeholder="datos.phone">
                                 </div>
                             </div>
                         </div>
@@ -137,17 +137,14 @@
                 var app = new Vue({
                   el: '#hola',
                   data: {
-                    name: 'Jorge Alberto Carranza',
-                    phone: 818695619,
-                    email: 'joanabner05@gmail.com',
-                    service: 'nada,nos',
-                    state: false,
-                    rate: 5,
-                    address:'San Marcos, #1744 , Col. Villas de Sto Domingo',
-                    area:'Automotriz',
-                    pass:'Aurel#34'
-
-                  }
+                    datos:[]
+                  },
+        mounted () {
+          axios.get('../session2')
+          .then((response) => {this.datos = response['data']['Usuario']; console.log(response['data']['Usuario'])})
+          .catch((error) => { })
+          .then(() => { })
+        }
                 })
           </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

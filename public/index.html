@@ -15,11 +15,11 @@
         <!-- Logo -->
         <nav class="navbar navbar-light text-light">
                         <a class="navbar-brand"><h1>Yobi</h1></a>
-                        <form class="form-inline">
+                        <div class="form-inline">
                           <input id="usuarioL" class="form-control mr-sm-2" type="email" placeholder="Correo Electronico" aria-label="Search"> <br><br>
                           <input id="passL" class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Search">
-                          <button class="btn btn-dark my-2 my-sm-0" type="submit">Entrar</button>
-                        </form>
+                          <button class="btn btn-dark my-2 my-sm-0" type="submit" onclick="inicio()">Entrar</button>
+                        </div>
         </nav>
         <br>
     <section class="container-fluid" id="fondo">
@@ -80,16 +80,24 @@
             }
     </style>
     <script>   
-        var usuarioL = document.getElementById("usuarioL");
-        var passL = document.getElementById("passL");
+        
         
         function RegistrarUsuario() {
 
             var name = document.getElementById("name").value;
             var address = document.getElementById("address").value;
             var email = document.getElementById("email").value;
-            var pass = (document.getElementById("pass").value).toString();
-           mandarDatos("http://localhost:3000/yobi/api/users/nuevoUsuario",{'name':name,'address':address,'email':email,'pass':pass});
+            var pass = document.getElementById("pass").value;
+            console.log({'name':name,'address':address,'email':email,'password':pass});
+           mandarDatos("../yobi/api/users/nuevoUsuario",{'name':name,'address':address,'email':email,'password':pass});
+        }
+
+        function inicio() {
+            var usuarioL = document.getElementById("usuarioL").value;
+            var passL = document.getElementById("passL").value;
+            console.log({'email':usuarioL,'pass':passL});
+           mandarDatos("../session",{'email':usuarioL,'pass':passL});
+           location.href = '../inicio.html'
         }
     </script>
 </body>

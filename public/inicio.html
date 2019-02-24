@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,26 +53,17 @@
     <br>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" v-for="categoria in categorias">
             <div class="card" id="carta">
                 <div class="card-body">
                         <div class="row">
                             <div class=" card-title col-sm-4"><img  src="" width="50px" alt=""></div>
-                            <div class="card-text col-sm-8"><a href="#" class="btn"><h4>Automotriz</h4></a></div>
+                            <div class="card-text col-sm-8"><a href="#" class="btn"><h4>{{categoria.area}}</h4></a></div>
                         </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-                <div class="card " id="carta">
-                    <div class="card-body">
-                            <div class="row">
-                                <div class=" card-title col-sm-4"><img src="#" alt=""></div>
-                                <div class="card-text col-sm-8"><a href="#" class="btn"><h4>Construcción</h4></a></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
+        
     </div>
     <br>
     
@@ -90,7 +82,19 @@
       var app = new Vue({
         el: '#hola',
         data: {
-          name: 'Jorge'
+          name: 'Jorge',
+          categorias: []
+        },
+        mounted () {
+          axios.get('../yobi/api/categoria/categoriaList')
+          .then((response) => {this.categorias = response['data']['categoria'];})
+          .catch((error) => { })
+          .then(() => { });
+
+          axios.get('../session2')
+          .then((response) => {this.name = response['data']['Usuario']['name'];})
+          .catch((error) => { })
+          .then(() => { })
         }
       })
 </script>

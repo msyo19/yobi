@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -50,14 +51,14 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="card" id="card-servicio">
+            <div class="col-sm-4" v-for="dato in datos">
+                <div class="card" id="card-servicio" >
                     <div class="card-body">
                          <div class="row ">
-                             <div class="card-title col-sm-4"> <img src="../public/images/user.png" alt="user" width="70px"> <a href="/perfilProveedor"><i class="fas fa-info-circle fa-2x"></i></a></div>
-                             <div class="card-text col-sm-8" ><h5 style="color:#00759d;">{{name}}</h5><p>{{services}}</p>
+                             <div class="card-title col-sm-4"> <img src="../images/user.png" alt="user" width="70px"> <a href="/perfilProveedor"><i class="fas fa-info-circle fa-2x"></i></a></div>
+                             <div class="card-text col-sm-8" ><h5 style="color:#00759d;">{{dato.name}}</h5><p>{{dato.services}}</p>
                             <label for="address">Dirección</label>
-                            <input type="text" :placeholder="address" class="form-control" readonly>
+                            <input type="text" :placeholder="dato.address" class="form-control" readonly>
                             </div>
                          </div>
                     </div>
@@ -72,10 +73,19 @@
 
         el:'#hola',
         data:{
-            name: 'Jorge Alberto Carranza',
-            services:'Electricista, Mecanico',
-            address: 'San Marcos, 1744, Col. San Jorge'
+            name:'jorge',
+            datos:[]
+        },
+        mounted () {
+          axios.get('../yobi/api/users/listaUsuarios')
+          .then((response) => {this.datos = response['data']['usersList'];})
+          .catch((error) => { })
+          .then(() => { });
 
+          axios.get('../session2')
+          .then((response) => {this.name = response['data']['Usuario']['name'];})
+          .catch((error) => { })
+          .then(() => { })
         }
     })
 
