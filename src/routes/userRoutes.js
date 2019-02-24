@@ -4,4 +4,5 @@ router.post("/nuevoUsuario",userController.nuevoUsuario);
 router.get("/listaUsuarios",userController.userList);
 router.get('/user/:id', userController.getUser);
 router.put("/nuevoTrabajador", userController.nuevoTrabajador);
+router.get('/filterPhone', userController.filterPhone);
 module.exports = router;
