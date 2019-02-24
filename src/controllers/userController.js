@@ -100,8 +100,8 @@ usersController.nuevoTrabajador = (req, res) => {
   });
 };
 
-usersController.search = (req, res) => {
-	usersModel.findOne({name: 'name'}, (err, searchUser) => {
+usersController.filterPhone = (req, res) => {
+	usersModel.findOne({'phone.id' : id}, (err, searchUser) => {
 		if (err) {
 			return res.status(400).json({
 				status:false,
