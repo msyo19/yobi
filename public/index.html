@@ -7,28 +7,73 @@
     <title>Yobi-login</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../javascripts/test.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <section>
-        //logo
-            <form action="">
-                    <input type="text" name="email" id="email">
-                    <input type="password" name="pass" id="pass">
-                    <input type="submit" value="login">
-            </form>
+        <!-- Logo -->
+        <nav class="navbar navbar-light text-light">
+                        <a class="navbar-brand"><h1>Yobi</h1></a>
+                        <form class="form-inline">
+                          <input class="form-control mr-sm-2" type="email" placeholder="Correo Electronico" aria-label="Search"> <br><br>
+                          <input class="form-control mr-sm-2" type="password" placeholder="Contraseña" aria-label="Search">
+                          <button class="btn btn-dark my-2 my-sm-0" type="submit">Entrar</button>
+                        </form>
+        </nav>
+        <br>
+    <section class="container-fluid" id="fondo">
+                <div class="row">
+                        <div class="col-sm-6">
+                                <div class="card-body" id="registrar">
+                                        <h2 id="box-title" style="text-align:center;">Registrate</h2>
+                                        <br>
+                                <form action="">
+                                        <label for="name">Nombre</label>
+                                        <input class="form-control" type="text" name="name" id="name"><br>
+                                        <label for="address">Direccion</label>
+                                        <input class="form-control" type="text" name="address" id="address"><br>
+                                        <label for="email">Correo Electronico</label>
+                                        <input class="form-control" type="email" name="email" id="email"><br>
+                                        <label for="pass">Contraseña</label>
+                                        <input class="form-control" type="password" name="pass" id="pass"><br>
+                                        <input class="btn" type="submit" value="Registrar">
+                                </form>
+                                </div>
+                        </div>
+                        <div class="col-sm-6">
+                                <img id="category" src="images/hammer.png" alt="categorias">
+                        </div>
+                </div>
     </section>
-    <section>
-            <form action="">
-                    <input type="text" name="name" id="name">
-                    <input type="text" name="address" id="address">
-                    <input type="email" name="email" id="email">
-                    <input type="password" name="pass" id="pass">
-                    <input type="submit" value="register">
-            </form>
-            //imagenes y descripcon peqe;a
-            <section>
+    <style>
+            body{
+                background: linear-gradient(to right, #00b8bc,#0071bc)
+            }
+            #registrar{
+                    box-shadow: 1px 5px 10px;
+                    border-radius: 25px;
+                    background-color: #E6E6E6;
+            }
+            input[type=text], input[type=password], input[type=email] {
+                box-shadow: 0 0 1px;
+                border-radius: 50px;
+            }
+            input[type=submit]{
+                border-radius: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+                font-size: 20px;
+                background-color: #0071BC;
+                color: white;
+            }
 
-            </section>
-    </section>
+            #category{
+                width: 80%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+    </style>
 </body>
 </html>
