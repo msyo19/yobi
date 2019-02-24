@@ -69,4 +69,23 @@ usersController.userList = (req, res) => {
 		}
 	})
 }
+
+usersController.search = (req, res) => {
+	usersModel.findOne({name: 'name'}, (err, searchUser) => {
+		if (err) {
+			return res.status(400).json({
+				status:false,
+				message:'No encontrado'
+			}) 
+		}
+		else {
+				return res.status(200).json({
+					status:true,
+					message:'Busqueda existosa',
+					searchUser
+				})
+			}
+	});
+}
+
 module.exports = usersController;
